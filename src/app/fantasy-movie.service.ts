@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, AsyncSubject} from 'rxjs';
+import {BehaviorSubject, Observable, AsyncSubject, of} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map, withLatestFrom} from 'rxjs/operators';
+import {map, skip, switchMap, takeUntil, withLatestFrom} from 'rxjs/operators';
 import { Movie } from './movie';
+import {query} from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class FantasyMovieService {
   constructor(private http: HttpClient) {
   }
 
-  public getMovies(): Observable<Movie[]> {
-    const url = 'assets/movies.json';
+  public getMovies(queryString: string): Observable<Movie[]> {
+    const url = `assets/movies.json?q=${queryString}`;
     if (!this.cache.has(url)) {
       this.cache.set(url, this.fetchMovies(url));
     }
@@ -23,11 +24,11 @@ export class FantasyMovieService {
   }
 
   public getFilteredMovies() {
-    return this.getMovies()
+    return this.searchKeyword$
       .pipe(
-        withLatestFrom(this.searchKeyword$),
-        map(([movies, keyword]) => {
-          return movies.filter(movie => movie && movie.tag.includes(keyword));
+        switchMap((queryString: string) => {
+          const nextSearch$ = this.searchKeyword$.pipe(skip(1));
+          return this.getMovies(queryString).pipe(takeUntil(nextSearch$));
         })
       );
   }
