@@ -1,2 +1,2 @@
-<app-fantasy-movie-search (onSearch)="searchService.search($event)"></app-fantasy-movie-search>
-<app-fantasy-movie-list [movies$]="searchService.getMovies()"></app-fantasy-movie-list>
+<app-fantasy-movie-search (onSearch)="searchService.search($event)"></app-fantasy-movie-search><!-- (onSearch)="doSearch($event)-->
+<app-fantasy-movie-list [movies$]="searchService.getMovies()"></app-fantasy-movie-list><!--[movies$]="movies$"-->

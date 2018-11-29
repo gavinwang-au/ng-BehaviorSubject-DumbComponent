@@ -21,11 +21,11 @@ export class FantasyMovieService {
     return this._searchKeywordSubject.asObservable().pipe(
       switchMap(searchKeyword => {
         if (this.movies) {
-          return of(this.movies.filter(movie => movie.tag === searchKeyword));
+          return of(this.movies.filter(movie => !searchKeyword ? true : movie.tag === searchKeyword));
         } else {
           return this.http.get<Movie[]>(this.url).pipe(
             tap(movies => this.movies = movies),
-            map(movies => movies.filter(movie => movie.tag === searchKeyword)),
+            map(movies => movies.filter(movie => !searchKeyword ? true : movie.tag === searchKeyword)),
           );
         }
       })

@@ -1,6 +1,6 @@
 [
 {
-  "name": "Lord of the Rings, The Fellowship of the Ring[",
+  "name": "Lord of the Rings, The Fellowship of the Ring",
   "tag": "fantasy"
 },
 {
@@ -14,4 +14,21 @@
 {
   "name": "Weird",
   "tag": "comedy"
-}]
+},
+{
+  "name": "Crazy Rich Asians",
+  "tag": "comedy"
+},
+{
+  "name": "The Handover",
+  "tag": "comedy"
+},
+{
+  "name": "Halloween",
+  "tag": "horror"
+},
+{
+  "name": "The Witch",
+  "tag": "horror"
+}
+]

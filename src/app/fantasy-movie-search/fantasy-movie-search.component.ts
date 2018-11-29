@@ -20,10 +20,17 @@ export class FantasyMovieSearchComponent implements OnInit {
       searchText: ''
     });
 
+    this.searchForm.get('searchText').valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe(this.onSearch);
+
+    /*
     this.searchForm.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged(),
       map(formValue => formValue.searchText)
     ).subscribe(this.onSearch);
+    */
   }
 }

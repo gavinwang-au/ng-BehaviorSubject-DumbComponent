@@ -11,7 +11,7 @@ import { FantasyMovieService } from './fantasy-movie.service';
 })
 export class AppComponent implements OnInit {
   title = 'behaviorSubject-Form';
-  movies$: Observable<Movie[]>;
+  // movies$: Observable<Movie[]>;
 
   constructor(public searchService: FantasyMovieService) {
   }
