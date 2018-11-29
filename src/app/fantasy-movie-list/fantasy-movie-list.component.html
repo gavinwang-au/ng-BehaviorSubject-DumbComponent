@@ -1,5 +1,9 @@
 <ul>
-	<li *ngFor="let movie of (movies$ | async)">
-		{{movie.name}} - Tag: {{movie.tag}}
-	</li>
+  <li *ngFor="let movie of movies" style="color: red;">
+    {{movie.name}} - Tag: {{movie.tag}}
+  </li>
+
+  <li *ngFor="let movie of allMovies" style="color: green;">
+    {{movie.name}} - Tag: {{movie.tag}}
+  </li>
 </ul>

@@ -1,6 +1,4 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Movie } from './movie';
 import { FantasyMovieService } from './fantasy-movie.service';
 
 @Component({
