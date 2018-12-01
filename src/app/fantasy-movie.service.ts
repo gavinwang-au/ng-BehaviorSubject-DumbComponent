@@ -10,6 +10,7 @@ import { Movie } from './movie';
 export class FantasyMovieService {
   private _searchKeywordSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public searchKeyword$: Observable<string> = this._searchKeywordSubject.asObservable();
+  
   private cache = new Map<string, Observable<Movie[]>>();
 
   constructor(private http: HttpClient) {
