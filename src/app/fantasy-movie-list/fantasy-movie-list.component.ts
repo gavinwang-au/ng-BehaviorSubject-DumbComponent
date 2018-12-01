@@ -6,8 +6,8 @@ import { Movie } from '../movie';
   styleUrls: ['./fantasy-movie-list.component.css']
 })
 export class FantasyMovieListComponent {
-  @Input() movies: Movie[] [];
-  @Input() allMovies: Movie[] [];
+  @Input() movies: Movie[] = [];
+  @Input() allMovies: Movie[] = [];
 
   constructor() {
   }
